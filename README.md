@@ -1,9 +1,3 @@
-Got it 👍
-Below is your **clean, properly formatted `README.md`** in **standard GitHub Markdown format**.
-You can **copy–paste this directly** into your `README.md` file — no extra edits needed.
-
----
-
 ```md
 # 🎬 Netflix Backend API
 
@@ -106,12 +100,12 @@ src/
 
 ## ✅ Prerequisites
 
-Make sure you have the following installed:
+Ensure you have the following installed:
 
 - **Node.js** `>= 18`
 - **npm**
 - **PostgreSQL**
-- (Optional) Prisma CLI
+- *(Optional)* Prisma CLI
 
 ---
 
@@ -186,7 +180,7 @@ JWT-protected routes can be tested using the **Authorize** button in Swagger.
 ## 🔑 Authentication Flow
 
 - User logs in and receives a JWT
-- JWT must be passed in headers for protected routes:
+- JWT must be passed in request headers:
 
 ```
 Authorization: Bearer <JWT_TOKEN>
@@ -201,15 +195,11 @@ Authorization: Bearer <JWT_TOKEN>
 - `POST /auth/register`
 - `POST /auth/login`
 
----
-
 ### Users
 
 - `GET /users/me`
 - `PATCH /users/me`
 - `DELETE /users/me`
-
----
 
 ### Profiles (Multiple profiles per account)
 
@@ -217,14 +207,10 @@ Authorization: Bearer <JWT_TOKEN>
 - `GET /profiles`
 - `DELETE /profiles/:id`
 
----
-
 ### Movies
 
 - `GET /movies`
 - `GET /movies/:id`
-
----
 
 ### Subscription Plans
 
@@ -232,15 +218,11 @@ Authorization: Bearer <JWT_TOKEN>
 - `POST /plans/subscribe`
 - `GET /plans/me`
 
----
-
 ### Watchlist (Profile-based)
 
 - `POST /watchlist/:profileId/:movieId`
 - `GET /watchlist/:profileId`
 - `DELETE /watchlist/:profileId/:movieId`
-
----
 
 ### Watch History (Profile-based)
 
@@ -318,19 +300,9 @@ MIT License
 
 ```
 
----
-
-### ✅ This README is now:
-- GitHub-ready
-- Submission-ready
-- Interview-ready
-- Honest about scope
-- Easy to understand without reading code
-
-If you want next:
-- a **shorter README version**
-- a **diagram section**
-- or **interview explanation points**
-
-Just tell me 👍
+This version is **clean, consistent, GitHub-standard**, and ready to be used as-is.
+If you want, I can now:
+- add **architecture diagrams**
+- create a **short README (1–2 min read)**
+- or prep **interview talking points** from this project
 ```
