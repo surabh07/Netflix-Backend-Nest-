@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Role {
+  id         Int      @id @default(autoincrement())
+  role_name  String   @unique
+  created_at DateTime @default(now())
+
+  users UserRole[]
+}
+
+model User {
+  id          Int       @default(autoincrement())
+  user_id     String    @id @default(uuid())
+  first_name  String
+  last_name   String
+  phonenumber String
+  email       String    @unique
+  password    String
+  is_deleted  Boolean   @default(false)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime?
+
+  roles UserRole[]
+  plans Subscription[]
+
+  profiles Profile[]
+}
+
+model UserRole {
+  user_id String
+  role_id Int
+
+  user User @relation(fields: [user_id], references: [user_id])
+  role Role @relation(fields: [role_id], references: [id])
+
+  @@id([user_id, role_id])
+}
+
+model Plan {
+  id         Int      @id @default(autoincrement())
+  name       String   @unique
+  price      Int
+  duration   Int //in days
+  created_at DateTime @default(now())
+
+  users Subscription[]
+}
+
+model Subscription {
+  id       Int      @id @default(autoincrement())
+  plan_id  Int
+  user_id  String
+  start_at DateTime @default(now())
+  end_at   DateTime
+
+  user User @relation(fields: [user_id], references: [user_id])
+  plan Plan @relation(fields: [plan_id], references: [id])
+}
+
+model Profile {
+  id         Int      @id @default(autoincrement())
+  user_id    String
+  name       String
+  is_kid     Boolean  @default(false)
+  created_at DateTime @default(now())
+
+  user      User           @relation(fields: [user_id], references: [user_id])
+  watchlist Watchlist[]
+  history   WatchHistory[]
+}
+
+model Movie {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  genre        String
+  duration     Int // minutes
+  release_year Int
+  created_at   DateTime @default(now())
+
+  watchlist Watchlist[]
+  history   WatchHistory[]
+}
+
+model Watchlist {
+  id         Int      @id @default(autoincrement())
+  profile_id Int
+  movie_id   Int
+  created_at DateTime @default(now())
+
+  profile Profile @relation(fields: [profile_id], references: [id])
+  movie   Movie   @relation(fields: [movie_id], references: [id])
+
+  @@unique([profile_id, movie_id])
+}
+
+model WatchHistory {
+  id         Int      @id @default(autoincrement())
+  profile_id Int
+  movie_id   Int
+  watched_at DateTime @default(now())
+
+  profile Profile @relation(fields: [profile_id], references: [id])
+  movie   Movie   @relation(fields: [movie_id], references: [id])
+
+  @@unique([profile_id, movie_id])
+}
