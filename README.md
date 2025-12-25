@@ -1,4 +1,3 @@
-```md
 # 🎬 Netflix Backend API
 
 A Netflix-inspired backend service built using **NestJS**, focused on authentication, subscriptions, profiles, movies, watchlist, and watch history.
@@ -57,15 +56,15 @@ The project emphasizes **clean architecture**, **ownership-based authorization**
 ---
 
 ## 📂 Folder Structure
-```
 
+```
 src/
 ├── auth/
-│ ├── dto/
-│ ├── strategies/
-│ ├── auth.controller.ts
-│ ├── auth.service.ts
-│ └── auth.module.ts
+│   ├── dto/
+│   ├── strategies/
+│   ├── auth.controller.ts
+│   ├── auth.service.ts
+│   └── auth.module.ts
 │
 ├── users/
 ├── profiles/
@@ -75,21 +74,21 @@ src/
 ├── watch-history/
 │
 ├── config/
-│ ├── app.config.ts
-│ ├── database.config.ts
-│ ├── jwt.config.ts
-│ ├── config.module.ts
-│ └── index.ts
+│   ├── app.config.ts
+│   ├── database.config.ts
+│   ├── jwt.config.ts
+│   ├── config.module.ts
+│   └── index.ts
 │
 ├── prisma/
-│ └── prisma.service.ts
+│   └── prisma.service.ts
 │
 ├── main.ts
 └── app.module.ts
-
-````
+```
 
 ### Key Notes
+
 - Feature-based modular architecture
 - Clear separation: Controllers → Services → Database
 - DTOs used for request validation
@@ -100,12 +99,12 @@ src/
 
 ## ✅ Prerequisites
 
-Ensure you have the following installed:
+Make sure you have the following installed:
 
 - **Node.js** `>= 18`
 - **npm**
 - **PostgreSQL**
-- *(Optional)* Prisma CLI
+- (Optional) Prisma CLI
 
 ---
 
@@ -118,7 +117,7 @@ PORT=3000
 DATABASE_URL=postgresql://user:password@localhost:5432/netflix_db
 JWT_SECRET=super_secret_key
 JWT_EXPIRES_IN=1d
-````
+```
 
 ---
 
@@ -180,7 +179,7 @@ JWT-protected routes can be tested using the **Authorize** button in Swagger.
 ## 🔑 Authentication Flow
 
 - User logs in and receives a JWT
-- JWT must be passed in request headers:
+- JWT must be passed in headers for protected routes:
 
 ```
 Authorization: Bearer <JWT_TOKEN>
@@ -195,11 +194,15 @@ Authorization: Bearer <JWT_TOKEN>
 - `POST /auth/register`
 - `POST /auth/login`
 
+---
+
 ### Users
 
 - `GET /users/me`
 - `PATCH /users/me`
 - `DELETE /users/me`
+
+---
 
 ### Profiles (Multiple profiles per account)
 
@@ -207,10 +210,14 @@ Authorization: Bearer <JWT_TOKEN>
 - `GET /profiles`
 - `DELETE /profiles/:id`
 
+---
+
 ### Movies
 
 - `GET /movies`
 - `GET /movies/:id`
+
+---
 
 ### Subscription Plans
 
@@ -218,11 +225,15 @@ Authorization: Bearer <JWT_TOKEN>
 - `POST /plans/subscribe`
 - `GET /plans/me`
 
+---
+
 ### Watchlist (Profile-based)
 
 - `POST /watchlist/:profileId/:movieId`
 - `GET /watchlist/:profileId`
 - `DELETE /watchlist/:profileId/:movieId`
+
+---
 
 ### Watch History (Profile-based)
 
@@ -289,7 +300,7 @@ npm run test:e2e
 
 ## 👤 Maintainer
 
-**Surabh Chaudhari**
+**Surabh Chaudhari**  
 Backend Developer
 
 ---
@@ -297,12 +308,3 @@ Backend Developer
 ## 📄 License
 
 MIT License
-
-```
-
-This version is **clean, consistent, GitHub-standard**, and ready to be used as-is.
-If you want, I can now:
-- add **architecture diagrams**
-- create a **short README (1–2 min read)**
-- or prep **interview talking points** from this project
-```
