@@ -28,9 +28,11 @@ export class RegisterDto {
   phonenumber: string;
 
   @IsEmail()
+  @IsNotEmpty()
   email: string;
 
   @MinLength(6)
+  @IsNotEmpty()
   password: string;
 
   @IsArray()

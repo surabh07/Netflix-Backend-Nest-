@@ -25,10 +25,10 @@ export class PlansController {
     return this.plansService.getAllPlans();
   }
 
-  @Get(':id')
-  getPlan(@Param('id', ParseIntPipe) id: number) {
-    return this.plansService.getPlanById(id);
-  }
+  // @Get(':id')
+  // getPlan(@Param('id', ParseIntPipe) id: number) {
+  //   return this.plansService.getPlanById(id);
+  // }
 
   // ADMIN-ROUTES (no roles yet)
   @Post()
@@ -59,6 +59,7 @@ export class PlansController {
   @UseGuards(AuthGuard('jwt'))
   @Get('me')
   getMyPlan(@Req() req) {
+    console.log(req.user.userId);
     return this.plansService.getMySubscription(req.user.userId);
   }
 }

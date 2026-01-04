@@ -5,7 +5,7 @@ import { MoviesService } from './movies.service';
 export class MoviesController {
   constructor(private moviesService: MoviesService) {}
 
-  @Get()
+  @Get('getAll')
   getAll() {
     return this.moviesService.getAllMovies();
   }
